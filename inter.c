@@ -28,7 +28,7 @@ void	inter(char *str_1, char *str_2)
 	idx = 0;
 	while (str_1[idx] != '\0')
 	{
-		check_ascii_tab(tab, str_1[idx]);
+		check_tab(tab, str_1[idx]);
 		idx++;
 	}
 }

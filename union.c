@@ -6,7 +6,7 @@
 /*   By: lboumahd <lboumahd@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:34:54 by lboumahd          #+#    #+#             */
-/*   Updated: 2024/05/30 16:35:57 by lboumahd         ###   ########.fr       */
+/*   Updated: 2024/05/30 20:03:36 by lboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_union(char *str_1, char *str_2)
 	idx = 0;
 	while (str_2[idx] != '\0')
 	{
-		check_ascii_tab(tab, str_2[idx]);
+		check_tab(tab, str_2[idx]);
 		idx++;
 	}
 }
