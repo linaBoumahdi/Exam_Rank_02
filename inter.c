@@ -1,31 +1,41 @@
-#include <unistd.h>	
+#include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
+int check_dup(char *s, char c, int pos){
+    int i = 0;
+
+    while (i < pos){
+        if (s[i] == c)
+            return (1);
+        ++i;
+    }
+    return (0);
 }
 
-void	check_ascii_tab(int *tab, char c)
-{
-	if (tab[(int)c] == 1)
-	{
-		tab[(int)c] = 0;
-		ft_putchar(c);
-	}
+void    inter(char *s1, char *s2){
+    int i = 0;
+    int j;
+    
+    while (s1[i]){
+        j = 0;
+        while (s2[j]){
+            if (s1[i] == s2[j]){
+                if (!check_dup(s1, s1[i], i)){
+                    write(1, &s1[i], 1);
+                    break;
+                }
+            }
+            ++j;
+        }
+        ++i;
+    }
 }
 
-void	inter(char *str_1, char *str_2)
-{
-	int	idx;
-	int	tab[256];
-
-	idx = 0;
-	while (str_2[idx] != '\0')
-	{
-		tab[(int)str_2[idx]] = 1;
-		idx++;
-	}
-	idx = 0;
+int main(int ac, char **av){
+    if (ac == 3)
+        inter(av[1], av[2]);
+    write(1, "\n", 1);
+    return(0);
+}
 	while (str_1[idx] != '\0')
 	{
 		check_tab(tab, str_1[idx]);
