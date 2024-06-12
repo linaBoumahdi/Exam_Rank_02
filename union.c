@@ -1,59 +1,39 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   union.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lboumahd <lboumahd@student.s19.be>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 16:34:54 by lboumahd          #+#    #+#             */
-/*   Updated: 2024/05/30 20:03:36 by lboumahd         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <unistd.h>
 
+int check_dup(char *s, char c, int pos){
+    int i = 0;
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
+    while (i < pos){
+        if (s[i] == c)
+            return (1);
+        ++i;
+    }
+    return (0);
 }
 
-void	check_tab(int *tab, char c_str_2)
-{
-	if (tab[(int)c_str_2] == 0)
-	{
-		ft_putchar(c_str_2);
-		tab[(int)c_str_2] = 1;
-	}
+void    ft_union(char *s1, char *s2){
+    int i = 0;
+    int len;
+
+    while (s1[i]){
+        if ((!check_dup(s1, s1[i], i)))
+            write(1, &s1[i], 1);
+        ++i;
+    }
+    len = i;
+    i = 0;
+    while (s2[i]){
+        if (!check_dup(s2, s2[i], i)){
+            if (!check_dup(s1, s2[i], len))
+                write(1, &s2[i], 1);
+        }
+        ++i;
+    }
 }
 
-void	ft_union(char *str_1, char *str_2)
-{
-	int	idx;
-	int	tab[256];
-
-	idx = 0;
-	while (idx <= 256)
-	{
-		tab[idx] = 0;
-		idx++;
-	}
-	idx = 0;
-	while (str_1[idx] != '\0')
-	{
-		check_tab(tab, str_1[idx]);
-		idx++;
-	}
-	idx = 0;
-	while (str_2[idx] != '\0')
-	{
-		check_tab(tab, str_2[idx]);
-		idx++;
-	}
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc == 3)
-		ft_union(argv[1], argv[2]);
-	ft_putchar('\n');
-	return (0);
+int main(int ac, char **av){
+    if (ac == 3)
+        ft_union(av[1], av[2]);
+    write(1, "\n", 1);
+    return(0);
 }
