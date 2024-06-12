@@ -41,7 +41,7 @@ int ft_printf(const char *format, ...)
 
 	while(*format)
 	{
-		if(*format == '%' && (*(format + 1) == 's') (*(format + 1) == 'x' )
+		if(*format == '%' && (*(format + 1) == 's')|| (*(format + 1) == 'x') || (*(format + 1) == 'd')))
 		{
 			format ++;
 			if (*format == 's')
@@ -55,7 +55,8 @@ int ft_printf(const char *format, ...)
 			count += write(1, format, 1);
 		format++;
 	}
-	return(va_end(ptr), count);
+	va_end(ptr);
+	return(count);
 }
 #include <stdio.h>
 #include <limits.h>
