@@ -41,7 +41,7 @@ int ft_printf(const char *format, ...)
 
 	while(*format)
 	{
-		if(*format == '%' )
+		if(*format == '%' && (*(format + 1) == 's') (*(format + 1) == 'x' )
 		{
 			format ++;
 			if (*format == 's')
